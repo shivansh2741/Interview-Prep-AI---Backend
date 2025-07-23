@@ -14,7 +14,7 @@ export const generateToken = (userId) => {
 // @access public
 export const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, profileImageUrl } = req.body;
 
         //check if user already exists
         const userExists = await User.findOne( {email} );
@@ -35,8 +35,8 @@ export const registerUser = async (req, res) => {
 
         res.status(201).json({
             _id: user._id,
-            name: (await user).name,
-            email: (await user).email,
+            name: (user).name,
+            email: user.email,
             profileImageUrl,
             token: generateToken(user._id)
         })
@@ -67,7 +67,7 @@ export const loginUser = async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            profileImageUrl,
+            profileImageUrl: user.profileImageUrl,
             token: generateToken(user._id)
         })
     }
