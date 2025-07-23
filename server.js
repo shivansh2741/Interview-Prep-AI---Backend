@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import connectDB from "./configs/db.js";
 import  authRoutes  from "./routes/authRoutes.js"
+import sessionRoutes from "./routes/sessionRoutes.js"
 
 dotenv.config();
 
@@ -31,7 +32,7 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/auth", authRoutes);
-// app.use("/api/session", sessionRoutes);
+app.use("/api/sessions", sessionRoutes);
 // app.use("/api/questions", questionRoutes);
 
 // app.use("/api/ai/generate-questions", protect, generateInterviewQuestions);
