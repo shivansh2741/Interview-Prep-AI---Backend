@@ -7,6 +7,8 @@ import { dirname } from "path";
 import connectDB from "./configs/db.js";
 import  authRoutes  from "./routes/authRoutes.js"
 import sessionRoutes from "./routes/sessionRoutes.js"
+import questionRoutes from "./routes/questionRoutes.js"
+import aiGenerationRoutes from "./routes/aiGenerationRoutes.js"
 
 dotenv.config();
 
@@ -33,10 +35,9 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/sessions", sessionRoutes);
-// app.use("/api/questions", questionRoutes);
+app.use("/api/questions", questionRoutes);
 
-// app.use("/api/ai/generate-questions", protect, generateInterviewQuestions);
-// app.use("/api/ai/generate-explanations", protect, generateConceptExplanations);
+app.use("/api/ai", aiGenerationRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
