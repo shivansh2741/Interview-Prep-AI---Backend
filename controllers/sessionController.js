@@ -3,7 +3,7 @@ import Question from "../models/Question.js";
 
 export const createSession = async (req, res) => {
     try{
-        const {role, experience, topicToFocus, description, questions} = req.body;
+        const {role, experience, topicsToFocus, description, questions} = req.body;
 
         const userId = req.user._id;
 
@@ -11,7 +11,7 @@ export const createSession = async (req, res) => {
             user: userId,
             role,
             experience,
-            topicToFocus,
+            topicsToFocus,
             description
         });
 
