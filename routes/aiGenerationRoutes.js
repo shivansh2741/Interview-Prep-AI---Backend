@@ -5,6 +5,6 @@ import { protect } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.post('/generate-questions', protect, generateInterviewQuestions)
-router.post('/generate-explanations', protect, generateConceptExplanations)
+router.post('/generate-explanation', protect, generateConceptExplanations)
 
 export default router;
